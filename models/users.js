@@ -5,7 +5,19 @@ const userSchema = mongoose.Schema({
     type: String,
     unique: true
   },
-  password: String
+  password: String,
+  desc: String,
+  bio: String,
+  email: String,
+  thumbnail: String,
+  post: {
+    type: [],
+    default: []
+  },
+  following: {
+    type: [],
+    default: []
+  }
 });
 
 const userModel = mongoose.model('User', userSchema);
