@@ -4,6 +4,7 @@ import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import mongoose from 'mongoose';
 mongoose.Promise = global.Promise;
+import cors from 'cors';
 
 // import typeDefs from './schemas';
 // import resolvers from './resolvers';
@@ -24,6 +25,11 @@ const schema = makeExecutableSchema({
 const PORT = 3000;
 
 const app = express();
+app.use(
+  cors({
+    origin: ['http://localhost:3001']
+  })
+);
 
 app.use(
   '/graphql',
